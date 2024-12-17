@@ -14,7 +14,7 @@ To set up and run the project, follow these steps:
    ```bash
    git clone https://github.com/EVWTRENTINI/raylib-imguidocking-implot-vscode.git
    ```
-4. Open the **`main.code-workspace`** file in Visual Studio Code.
+4. Open the **`main.code-workspace`** file.
 5. Open the file **`main.cpp`**.
 6. Press **F5** to build and run the project.
 
@@ -42,7 +42,7 @@ Para configurar e executar o projeto, siga estes passos:
    ```bash
    git clone https://github.com/EVWTRENTINI/raylib-imguidocking-implot-vscode.git
    ```
-4. Abra o arquivo **`main.code-workspace`** no Visual Studio Code.
+4. Abra o arquivo **`main.code-workspace`**.
 5. Abra o arquivo **`main.cpp`**.
 6. Pressione **F5** para compilar e executar o projeto.
 
