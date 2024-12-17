@@ -1,0 +1,1 @@
+g++ main.cpp imgui_demo.cpp imgui_draw.cpp imgui_tables.cpp imgui_widgets.cpp imgui.cpp rlImGui.cpp -IC:/Users/Duwolf/Documents/Source/snake-game-include/include -lraylib -lopengl32 -lgdi32 -lwinmm
