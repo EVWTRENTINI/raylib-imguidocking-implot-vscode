@@ -340,10 +340,25 @@ int main(int argc, char* argv[])
 	SetConfigFlags(FLAG_MSAA_4X_HINT | FLAG_VSYNC_HINT);
 	InitWindow(screenWidth, screenHeight, "raylib-Extras [ImGui] example - ImGui Demo");
 	SetTargetFPS(144);
-	rlImGuiSetup(true);
-	ImPlot::CreateContext();//----------------------------IMPORTANTE PARA O IMPLOT--------------------------------------
+	rlImGuiBeginInitImGui();
+	ImGui::StyleColorsDark();
+	ImFontConfig fontConfig;
+	static const ImWchar customRange[] =
+		{
+			0x0020, 0x00FF, // Faixa básica (ASCII estendido)
+			0x0370, 0x03FF, // Faixa de grego
+			0};
+
+	ImFont *font = ImGui::GetIO().Fonts->AddFontFromFileTTF(
+		"resources/segoeuisl.ttf",
+		18.0f,
+		&fontConfig,
+		customRange);
+	rlImGuiEndInitImGui();
+	ImPlot::CreateContext(); //----------------------------IMPORTANTE PARA O IMPLOT--------------------------------------
 	ImGui::GetIO().ConfigWindowsMoveFromTitleBarOnly = true;
 	ImGui::GetIO().ConfigFlags |= ImGuiConfigFlags_DockingEnable;
+
 
 	ImageViewer.Setup();
 	ImageViewer.Open = true;
@@ -361,6 +376,7 @@ int main(int argc, char* argv[])
 		ClearBackground(DARKGRAY);
 		DrawCircle(screenWidth/2, screenHeight/2, 100, green);
 		rlImGuiBegin();
+		ImGui::PushFont(font);
 		ImGui::DockSpaceOverViewport(0, NULL, ImGuiDockNodeFlags_PassthruCentralNode);
 		DoMainMenu();
 		
@@ -381,9 +397,17 @@ int main(int argc, char* argv[])
             ImPlot::EndPlot();
         }
 
-
+		
 		ImGui::End();
 
+		{
+			ImGui::Begin("Janela Grega");
+			ImGui::Text("Γειά σου κόσμε!");
+			ImGui::Text("Texto com caracteres gregos α, β, γ, ϴ, Φ, Ω...");
+			ImGui::End();
+		}
+
+		ImGui::PopFont();
 		rlImGuiEnd();
 
 		EndDrawing();
